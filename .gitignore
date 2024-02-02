@@ -1,0 +1,5 @@
+data/english_annotated_corpus.xlsx
+data/english_annotated_df.csv
+data/english_annotated_full_df.csv
+data/MPDS2023a.xlsx
+data/mp_full_sts_embeddings.npy

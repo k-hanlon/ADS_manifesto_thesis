@@ -1,0 +1,28 @@
+This textfile contains information about the data files in this folder. 
+Describe what the data contains, where it's from etc.
+
+
+cos_sim_output_08_mpnet.npz
+	contains a sparse matrix of cosine similarity values between the sentence embeddings (from mp_full_sts_embeddings.npy)
+	so from the english annotated sentences using all-mpnet-base-v2. Only cosine similarity values over 0.8 and under -0.8
+	are saved to reduce memory space.
+
+
+english_annotated_corpus.xlsx
+	contains all the quasi-sentences with codes and additional information for english documents in the 
+	2023a version of the manifesto corpus
+
+english_annotated_df.csv
+	Main working document, contains the combined information on a quasi-sentence level, with main_codes
+	and RILE. H and NA sentence were removed.
+
+english_annotated_full_df.csv
+	As above, but H and NA sentences are still there, recoded as 0 and -1 respectively.
+
+MPDS2023a.xlsx
+	Contains information on a document level from the 2023a version of the manifesto corpus
+
+mp_full_sts_embeddings.npy
+	contains a numpy array of sentence embeddings of the english annotated sentences using all-mpnet-base-v2
+
+

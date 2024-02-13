@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Party_split_strategy</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="party_split_strategy_files/libs/clipboard/clipboard.min.js"></script>
+<script src="party_split_strategy_files/libs/quarto-html/quarto.js"></script>
+<script src="party_split_strategy_files/libs/quarto-html/popper.min.js"></script>
+<script src="party_split_strategy_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="party_split_strategy_files/libs/quarto-html/anchor.min.js"></script>
+<link href="party_split_strategy_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="party_split_strategy_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="party_split_strategy_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="party_split_strategy_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="party_split_strategy_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="party_split_strategy.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Party_split_strategy</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.4.4     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/english_annotated_full_df.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 202187 Columns: 17
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (8): q_sentence, codes, manifesto_id, language, title, countryname, part...
+dbl (9): q_sentence_nr, party, date, handbook, coderid, pervote, q_sentence_...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_vdem <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/V-Dem-CPD-Party-V2.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(country_name, v2paid, pf_party_id, v2paenname, year, v2pariglef, v2pariglef_ord, v2paimmig, v2paimmig_ord, v2paculsup) <span class="sc">|&gt;</span> </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">arrange</span>(v2pariglef) <span class="sc">|&gt;</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">left_right =</span> </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">case_when</span>(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                               v2pariglef_ord <span class="sc">==</span> <span class="dv">0</span> <span class="sc">~</span> <span class="st">"Far-left"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                               v2pariglef_ord <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Left"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>                               v2pariglef_ord <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Center-left"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                               v2pariglef_ord <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"Center"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                               v2pariglef_ord <span class="sc">==</span> <span class="dv">4</span> <span class="sc">~</span> <span class="st">"Center-right"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                               v2pariglef_ord <span class="sc">==</span> <span class="dv">5</span> <span class="sc">~</span> <span class="st">"Right"</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                               v2pariglef_ord <span class="sc">==</span> <span class="dv">6</span> <span class="sc">~</span> <span class="st">"Far-right"</span>),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">country_name =</span> </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>                       <span class="fu">case_when</span>(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>                               country_name <span class="sc">==</span> <span class="st">"United States of America"</span> <span class="sc">~</span> <span class="st">"United States"</span>, </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                               <span class="at">.default =</span> country_name</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>               )) <span class="sc">|&gt;</span> </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="fu">relocate</span>(left_right, <span class="at">.before =</span> v2pariglef_ord)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 11898 Columns: 384
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr    (9): v2paenname, v2paorname, v2pashname, party_gaps, pf_url, country_...
+dbl  (374): v2paid, pf_party_id, country_id, year, codingstart, gapstart, ga...
+date   (1): historical_date
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>vdem_small <span class="ot">&lt;-</span> df_vdem <span class="sc">|&gt;</span> <span class="fu">select</span>(country_name, v2paenname, year, left_right)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_parties <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">ym</span>(date) <span class="sc">|&gt;</span> <span class="fu">year</span>()) <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(manifesto_id, year, countryname, partyname) <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">unique</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">partyname =</span> <span class="fu">case_when</span>(</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                countryname <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">&amp;</span> partyname <span class="sc">==</span> <span class="st">"Labour Party"</span> <span class="sc">~</span> <span class="st">"Labour"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                countryname <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">&amp;</span> partyname <span class="sc">==</span> <span class="st">"Liberal Party"</span> <span class="sc">~</span> <span class="st">"Liberal Democrats"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                countryname <span class="sc">==</span> <span class="st">"United Kingdom"</span> <span class="sc">&amp;</span> partyname <span class="sc">==</span> <span class="st">"Conservative Party"</span> <span class="sc">~</span> <span class="st">"Conservatives"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                partyname <span class="sc">==</span> <span class="st">"We Ourselves"</span> <span class="sc">~</span> <span class="st">"Sinn Fein (Provisional)"</span>, </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                partyname <span class="sc">==</span> <span class="st">"Family of the Irish"</span> <span class="sc">~</span> <span class="st">"Fine Gael (Familiy of the Irish)"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                partyname <span class="sc">==</span> <span class="st">"Soldiers of Destiny"</span> <span class="sc">~</span> <span class="st">"Fianna Fail – The Republican Party"</span>, </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>                partyname <span class="sc">==</span> <span class="st">"New Zealand Labour Party"</span> <span class="sc">~</span> <span class="st">"Labour Party"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>                partyname <span class="sc">==</span> <span class="st">"New Zealand National Party"</span> <span class="sc">~</span> <span class="st">"National Party"</span>, </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>                countryname <span class="sc">==</span> <span class="st">"New Zealand"</span> <span class="sc">&amp;</span> partyname <span class="sc">==</span> <span class="st">"The Alliance"</span> <span class="sc">~</span> <span class="st">"Alliance"</span>,</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>                partyname <span class="sc">==</span> <span class="st">"Green Party of Aotearoa New Zealand"</span> <span class="sc">~</span> <span class="st">"Green Party"</span>, </span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>                partyname <span class="sc">==</span> <span class="st">"Social Credit Political League"</span> <span class="sc">~</span> <span class="st">"Social Credit / Democratic Party"</span>,</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>                partyname <span class="sc">==</span> <span class="st">"National Party of Australia"</span> <span class="sc">~</span> <span class="st">"Australian Country Party / National Party of Australia"</span>,</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>                partyname <span class="sc">==</span><span class="st">"Conservative Party of Canada"</span> <span class="sc">~</span> <span class="st">"Conservative Party of Canada (2003)"</span>,</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>                countryname <span class="sc">==</span> <span class="st">"Canada"</span> <span class="sc">&amp;</span> partyname <span class="sc">==</span> <span class="st">"Green Party"</span> <span class="sc">~</span> <span class="st">"Green Party of Canada"</span>,</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>                <span class="at">.default =</span> partyname</span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        )) <span class="sc">|&gt;</span> </span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        <span class="fu">left_join</span>(vdem_small, </span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>                  <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"countryname"</span> <span class="ot">=</span> <span class="st">"country_name"</span>, </span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"partyname"</span> <span class="ot">=</span> <span class="st">"v2paenname"</span>,</span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"year"</span> <span class="ot">=</span> <span class="st">"year"</span>)) </span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>df_parties <span class="sc">|&gt;</span> </span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(<span class="fu">is.na</span>(left_right)) <span class="sc">|&gt;</span> </span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        <span class="fu">arrange</span>(countryname, partyname, year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 91 × 5
+   manifesto_id  year countryname partyname                           left_right
+   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;                               &lt;chr&gt;     
+ 1 63810_201008  2010 Australia   Australian Country Party / Nationa… &lt;NA&gt;      
+ 2 63810_201309  2013 Australia   Australian Country Party / Nationa… &lt;NA&gt;      
+ 3 63810_201607  2016 Australia   Australian Country Party / Nationa… &lt;NA&gt;      
+ 4 63810_201905  2019 Australia   Australian Country Party / Nationa… &lt;NA&gt;      
+ 5 63110_201607  2016 Australia   Australian Greens                   &lt;NA&gt;      
+ 6 63901_201905  2019 Australia   Centre Alliance                     &lt;NA&gt;      
+ 7 63622_201309  2013 Australia   Country Liberal Party               &lt;NA&gt;      
+ 8 63710_201309  2013 Australia   Katter's Australian Party           &lt;NA&gt;      
+ 9 63710_201607  2016 Australia   Katter's Australian Party           &lt;NA&gt;      
+10 63710_201905  2019 Australia   Katter's Australian Party           &lt;NA&gt;      
+# ℹ 81 more rows</code></pre>
+</div>
+</div>
+<p>After some joining and obvious editing of names, we still have 91 unique country-year-name combinations without a left-right score that can be imported from V-Dem. Some of these are fairly easy to classify, such as the Social Democrats from Ireland, which while a fairly centrist party in irish politics, cannot be said to be a right wing party.</p>
+<p>Others, such as Katter’s Australian Party from Australia, is harder to classify. This is a party which wikipedia describes as a mix of agrarian socialism, social conservatism, and economic nationalism. A country expert might be able to classify this party, but without extensive studies it wold be hard.</p>
+<section id="strategies" class="level1">
+<h1>Strategies</h1>
+<section id="green-party-split" class="level2">
+<h2 class="anchored" data-anchor-id="green-party-split">Green party split</h2>
+<p>By far the easiest split is to split by green parties, as all countries with green parties in the dataset also has them named with the word “Green” in them. Drawback is that only 20 manifestos can be used, which limits the data and might make it hard to find enough similar sentences for further analysis.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_parties <span class="sc">|&gt;</span> <span class="fu">filter</span>(partyname <span class="sc">|&gt;</span> <span class="fu">str_detect</span>(<span class="st">"Green"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 5
+   manifesto_id  year countryname    partyname                        left_right
+   &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                            &lt;chr&gt;     
+ 1 51110_201505  2015 United Kingdom Green Party of England and Wales &lt;NA&gt;      
+ 2 51110_201706  2017 United Kingdom Green Party of England and Wales &lt;NA&gt;      
+ 3 51110_201912  2019 United Kingdom Green Party of England and Wales &lt;NA&gt;      
+ 4 53110_200705  2007 Ireland        Green Party                      &lt;NA&gt;      
+ 5 53110_201102  2011 Ireland        Green Party                      &lt;NA&gt;      
+ 6 53110_201602  2016 Ireland        Green Party                      &lt;NA&gt;      
+ 7 62110_200810  2008 Canada         Green Party of Canada            Center-le…
+ 8 62110_201510  2015 Canada         Green Party of Canada            &lt;NA&gt;      
+ 9 63110_200410  2004 Australia      Australian Greens                Left      
+10 63110_200711  2007 Australia      Australian Greens                Left      
+11 63110_201008  2010 Australia      Australian Greens                Left      
+12 63110_201309  2013 Australia      Australian Greens                Left      
+13 63110_201607  2016 Australia      Australian Greens                &lt;NA&gt;      
+14 63110_201905  2019 Australia      Australian Greens                Left      
+15 64110_200509  2005 New Zealand    Green Party                      Left      
+16 64110_200811  2008 New Zealand    Green Party                      Left      
+17 64110_201111  2011 New Zealand    Green Party                      Left      
+18 64110_201409  2014 New Zealand    Green Party                      Left      
+19 64110_201709  2017 New Zealand    Green Party                      Left      
+20 64110_202010  2020 New Zealand    Green Party                      &lt;NA&gt;      </code></pre>
+</div>
+</div>
+</section>
+<section id="left-right-split" class="level2">
+<h2 class="anchored" data-anchor-id="left-right-split">Left-Right split</h2>
+<p>Of the 91 combinations without a left-right score, there are 55 unique parties.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_parties <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>        <span class="fu">filter</span>(<span class="fu">is.na</span>(left_right)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">select</span>(<span class="sc">-</span>year, <span class="sc">-</span>manifesto_id) <span class="sc">|&gt;</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">arrange</span>(countryname, partyname) <span class="sc">|&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">unique</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 55 × 3
+   countryname partyname                                              left_right
+   &lt;chr&gt;       &lt;chr&gt;                                                  &lt;chr&gt;     
+ 1 Australia   Australian Country Party / National Party of Australia &lt;NA&gt;      
+ 2 Australia   Australian Greens                                      &lt;NA&gt;      
+ 3 Australia   Centre Alliance                                        &lt;NA&gt;      
+ 4 Australia   Country Liberal Party                                  &lt;NA&gt;      
+ 5 Australia   Katter's Australian Party                              &lt;NA&gt;      
+ 6 Australia   Nick Xenophon Team                                     &lt;NA&gt;      
+ 7 Canada      Green Party of Canada                                  &lt;NA&gt;      
+ 8 Ireland     Anti-Austerity Alliance                                &lt;NA&gt;      
+ 9 Ireland     Green Party                                            &lt;NA&gt;      
+10 Ireland     Independent Alliance                                   &lt;NA&gt;      
+# ℹ 45 more rows</code></pre>
+</div>
+</div>
+<p>While some still are hard to classify, most have fairly defined political positions. While it looses neuance and party drift, it’s possible to classify these parties, using other sources.</p>
+<ul>
+<li>If a party is a green party, it’s a left party.</li>
+<li>If wikipedia has a decent page on the party, and the party has a classification that uses “left”, it’s a left party, if it uses “right” it’s a right party. Parties with only “centre” is it’s own category for now.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>right <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Australian Country Party / National Party of Australia"</span>, <span class="st">"Country Liberal Party"</span>, <span class="st">"Progressive Democrats"</span>, <span class="st">"ACT New Zealand"</span>, </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>           <span class="st">"National Party"</span>, <span class="st">"New Zealand First Party"</span>, <span class="st">"Confederation for an Independent Poland"</span>, <span class="st">"Democratic Union"</span>, <span class="st">"Polish Peasants' Party"</span>, </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Coalition of Coexistence and the Hungarian Christian-Democratic Movement"</span>, <span class="st">"African Christian Democratic Party"</span>, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>           <span class="st">"African Independent Congress"</span>, <span class="st">"African Transformation Movement"</span>, <span class="st">"Democratic Party"</span>, <span class="st">"Freedom Front Plus"</span>, <span class="st">"Inkatha Freedom Party"</span>,  </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Democratic Unionist Party"</span>, <span class="st">"Ulster Unionist Party"</span>, <span class="st">"Republican Party"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>centre <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Centre Alliance"</span>, <span class="st">"Nick Xenophon Team"</span>, <span class="st">"United Future New Zealand"</span>)  </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>left <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Australian Greens"</span>, <span class="st">"Green Party of Canada"</span>, <span class="st">"Anti-Austerity Alliance"</span>, <span class="st">"Green Party"</span>, <span class="st">"People Before Profit"</span>, </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Social Democrats"</span>, <span class="st">"Socialist Party"</span>, <span class="st">"United Left Alliance"</span>, <span class="st">"Workers and Unemployment Action"</span>, <span class="st">"National Democratic Assembly"</span>,</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Jim Anderton’s Progressive"</span>, <span class="st">"Jim Anderton’s Progressive Coalition"</span>, <span class="st">"Labour Party"</span>, <span class="st">"Mana Party"</span>, <span class="st">"Māori Party"</span>, <span class="st">"Union of Labour"</span>,</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Party of the Democratic Left"</span>, <span class="st">"Congress of the People"</span>, <span class="st">"Good"</span>, <span class="st">"National Freedom Party"</span>, <span class="st">"United Democratic Movement"</span>, </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>          <span class="st">"Green Party of England and Wales"</span>, <span class="st">"Scottish National Party"</span>, <span class="st">"Sinn Fein (Provisional)"</span>, <span class="st">"Social Democratic and Labour Party"</span>, </span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>          <span class="st">"The Party of Wales"</span>, <span class="st">"Progressive Party"</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>df_parties <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">left_right =</span> <span class="fu">case_when</span>(</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        partyname <span class="sc">%in%</span> right <span class="sc">~</span> <span class="st">"Right"</span>,</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        partyname <span class="sc">%in%</span> left <span class="sc">~</span> <span class="st">"Right"</span>,</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>        partyname <span class="sc">%in%</span> centre <span class="sc">~</span> <span class="st">"Centre"</span>, </span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">.default =</span> left_right</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>)) <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(left_right))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 7 × 5
+  manifesto_id  year countryname    partyname                         left_right
+  &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;                             &lt;chr&gt;     
+1 51421_199705  1997 United Kingdom Liberal Democrats                 &lt;NA&gt;      
+2 51421_201505  2015 United Kingdom Liberal Democrats                 &lt;NA&gt;      
+3 51430_201912  2019 United Kingdom Alliance Party of Northern Irela… &lt;NA&gt;      
+4 53981_201602  2016 Ireland        Independent Alliance              &lt;NA&gt;      
+5 63710_201309  2013 Australia      Katter's Australian Party         &lt;NA&gt;      
+6 63710_201607  2016 Australia      Katter's Australian Party         &lt;NA&gt;      
+7 63710_201905  2019 Australia      Katter's Australian Party         &lt;NA&gt;      </code></pre>
+</div>
+</div>
+<p>This still leaves a few party, such as the Liberal Democrats in the United Kingdom. They are described as centre to centre-left, while they also sat in government with the Conservative Party. Same with their Northern Irish party, Alliance Party of Northern Ireland.</p>
+<p>Independent Alliance from Ireland is a coalition of non-partisan politicians, which however sat in a Fine Gael centre-right government. Katter’s Australian Party is asformentioned hard to classify.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

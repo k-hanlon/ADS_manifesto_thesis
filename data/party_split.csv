@@ -1,60 +1,60 @@
 manifesto_id,year,countryname,partyname,migration_positive,left_right,green
 51421_199705,1997,United Kingdom,Liberal Democrats,NA,Center,No
-51902_199705,1997,United Kingdom,Scottish National Party,NA,Right,No
+51902_199705,1997,United Kingdom,Scottish National Party,NA,Left,No
 51320_200106,2001,United Kingdom,Labour,3,Center,No
-51902_200106,2001,United Kingdom,Scottish National Party,NA,Right,No
-51110_201505,2015,United Kingdom,Green Party of England and Wales,NA,Right,Yes
-51210_201505,2015,United Kingdom,Sinn Fein (Provisional),NA,Right,No
+51902_200106,2001,United Kingdom,Scottish National Party,NA,Left,No
+51110_201505,2015,United Kingdom,Green Party of England and Wales,NA,Left,Yes
+51210_201505,2015,United Kingdom,Sinn Fein (Provisional),NA,Left,No
 51320_201505,2015,United Kingdom,Labour,2,Center-left,No
-51340_201505,2015,United Kingdom,Social Democratic and Labour Party,NA,Right,No
+51340_201505,2015,United Kingdom,Social Democratic and Labour Party,NA,Left,No
 51421_201505,2015,United Kingdom,Liberal Democrats,NA,Center,No
 51620_201505,2015,United Kingdom,Conservatives,1,Center-right,No
 51621_201505,2015,United Kingdom,Ulster Unionist Party,NA,Right,No
-51901_201505,2015,United Kingdom,The Party of Wales,NA,Right,No
-51902_201505,2015,United Kingdom,Scottish National Party,NA,Right,No
+51901_201505,2015,United Kingdom,The Party of Wales,NA,Left,No
+51902_201505,2015,United Kingdom,Scottish National Party,NA,Left,No
 51903_201505,2015,United Kingdom,Democratic Unionist Party,NA,Right,No
 51951_201505,2015,United Kingdom,United Kingdom Independence Party,0,Right,No
-51110_201706,2017,United Kingdom,Green Party of England and Wales,NA,Right,Yes
-51210_201706,2017,United Kingdom,Sinn Fein (Provisional),NA,Right,No
+51110_201706,2017,United Kingdom,Green Party of England and Wales,NA,Left,Yes
+51210_201706,2017,United Kingdom,Sinn Fein (Provisional),NA,Left,No
 51320_201706,2017,United Kingdom,Labour,3,Left,No
 51421_201706,2017,United Kingdom,Liberal Democrats,3,Center,No
 51620_201706,2017,United Kingdom,Conservatives,0,Center-right,No
-51901_201706,2017,United Kingdom,The Party of Wales,NA,Right,No
-51902_201706,2017,United Kingdom,Scottish National Party,NA,Right,No
+51901_201706,2017,United Kingdom,The Party of Wales,NA,Left,No
+51902_201706,2017,United Kingdom,Scottish National Party,NA,Left,No
 51903_201706,2017,United Kingdom,Democratic Unionist Party,NA,Right,No
 51951_201706,2017,United Kingdom,United Kingdom Independence Party,0,Right,No
-51110_201912,2019,United Kingdom,Green Party of England and Wales,NA,Right,Yes
-51210_201912,2019,United Kingdom,Sinn Fein (Provisional),NA,Right,No
+51110_201912,2019,United Kingdom,Green Party of England and Wales,NA,Left,Yes
+51210_201912,2019,United Kingdom,Sinn Fein (Provisional),NA,Left,No
 51320_201912,2019,United Kingdom,Labour,3,Left,No
-51340_201912,2019,United Kingdom,Social Democratic and Labour Party,NA,Right,No
+51340_201912,2019,United Kingdom,Social Democratic and Labour Party,NA,Left,No
 51421_201912,2019,United Kingdom,Liberal Democrats,3,Center,No
 51430_201912,2019,United Kingdom,Alliance Party of Northern Ireland,NA,Center,No
 51620_201912,2019,United Kingdom,Conservatives,1,Right,No
-51901_201912,2019,United Kingdom,The Party of Wales,NA,Right,No
-51902_201912,2019,United Kingdom,Scottish National Party,3,Right,No
+51901_201912,2019,United Kingdom,The Party of Wales,NA,Left,No
+51902_201912,2019,United Kingdom,Scottish National Party,3,Left,No
 51903_201912,2019,United Kingdom,Democratic Unionist Party,NA,Right,No
-53110_200705,2007,Ireland,Green Party,NA,Right,Yes
-53320_200705,2007,Ireland,Labour Party,3,Right,No
+53110_200705,2007,Ireland,Green Party,NA,Left,Yes
+53320_200705,2007,Ireland,Labour Party,3,Left,No
 53420_200705,2007,Ireland,Progressive Democrats,NA,Right,No
 53520_200705,2007,Ireland,Fine Gael (Familiy of the Irish),3,Center,No
 53620_200705,2007,Ireland,Fianna Fail – The Republican Party,3,Center,No
-53951_200705,2007,Ireland,Sinn Fein (Provisional),3,Right,No
-53021_201102,2011,Ireland,United Left Alliance,NA,Right,No
-53110_201102,2011,Ireland,Green Party,NA,Right,Yes
-53230_201102,2011,Ireland,Socialist Party,NA,Right,No
-53320_201102,2011,Ireland,Labour Party,3,Right,No
+53951_200705,2007,Ireland,Sinn Fein (Provisional),3,Left,No
+53021_201102,2011,Ireland,United Left Alliance,NA,Left,No
+53110_201102,2011,Ireland,Green Party,NA,Left,Yes
+53230_201102,2011,Ireland,Socialist Party,NA,Left,No
+53320_201102,2011,Ireland,Labour Party,3,Left,No
 53520_201102,2011,Ireland,Fine Gael (Familiy of the Irish),3,Center,No
 53620_201102,2011,Ireland,Fianna Fail – The Republican Party,3,Center,No
-53951_201102,2011,Ireland,Sinn Fein (Provisional),3,Right,No
-53110_201602,2016,Ireland,Green Party,NA,Right,Yes
-53231_201602,2016,Ireland,People Before Profit,NA,Right,No
-53240_201602,2016,Ireland,Anti-Austerity Alliance,NA,Right,No
-53250_201602,2016,Ireland,Workers and Unemployment Action,NA,Right,No
-53320_201602,2016,Ireland,Labour Party,3,Right,No
-53321_201602,2016,Ireland,Social Democrats,NA,Right,No
+53951_201102,2011,Ireland,Sinn Fein (Provisional),3,Left,No
+53110_201602,2016,Ireland,Green Party,NA,Left,Yes
+53231_201602,2016,Ireland,People Before Profit,NA,Left,No
+53240_201602,2016,Ireland,Anti-Austerity Alliance,NA,Left,No
+53250_201602,2016,Ireland,Workers and Unemployment Action,NA,Left,No
+53320_201602,2016,Ireland,Labour Party,3,Left,No
+53321_201602,2016,Ireland,Social Democrats,NA,Left,No
 53520_201602,2016,Ireland,Fine Gael (Familiy of the Irish),3,Center,No
 53620_201602,2016,Ireland,Fianna Fail – The Republican Party,3,Center,No
-53951_201602,2016,Ireland,Sinn Fein (Provisional),3,Right,No
+53951_201602,2016,Ireland,Sinn Fein (Provisional),3,Left,No
 53981_201602,2016,Ireland,Independent Alliance,NA,NA,No
 61320_199211,1992,United States,Democratic Party,2,Right,No
 61320_200411,2004,United States,Democratic Party,2,Right,No
@@ -72,30 +72,30 @@ manifesto_id,year,countryname,partyname,migration_positive,left_right,green
 62320_200601,2006,Canada,New Democratic Party,4,Left,No
 62420_200601,2006,Canada,Liberal Party of Canada,3,Center,No
 62623_200601,2006,Canada,Conservative Party of Canada (2003),2,Center-right,No
-62110_200810,2008,Canada,Green Party of Canada,3,Right,Yes
+62110_200810,2008,Canada,Green Party of Canada,3,Left,Yes
 62320_200810,2008,Canada,New Democratic Party,4,Left,No
 62420_200810,2008,Canada,Liberal Party of Canada,3,Center,No
 62623_200810,2008,Canada,Conservative Party of Canada (2003),2,Center-right,No
-62110_201510,2015,Canada,Green Party of Canada,NA,Right,Yes
+62110_201510,2015,Canada,Green Party of Canada,NA,Left,Yes
 62320_201510,2015,Canada,New Democratic Party,4,Left,No
 62420_201510,2015,Canada,Liberal Party of Canada,3,Center-left,No
 62623_201510,2015,Canada,Conservative Party of Canada (2003),2,Center-right,No
 63620_200111,2001,Australia,Liberal Party of Australia,3,Center-right,No
 63810_200111,2001,Australia,Australian Country Party / National Party of Australia,3,Right,No
-63110_200410,2004,Australia,Australian Greens,4,Right,Yes
+63110_200410,2004,Australia,Australian Greens,4,Left,Yes
 63320_200410,2004,Australia,Australian Labor Party,3,Center-left,No
 63620_200410,2004,Australia,Liberal Party of Australia,3,Center-right,No
 63810_200410,2004,Australia,Australian Country Party / National Party of Australia,3,Right,No
-63110_200711,2007,Australia,Australian Greens,4,Right,Yes
+63110_200711,2007,Australia,Australian Greens,4,Left,Yes
 63320_200711,2007,Australia,Australian Labor Party,3,Center-left,No
 63620_200711,2007,Australia,Liberal Party of Australia,3,Center-right,No
 63810_200711,2007,Australia,Australian Country Party / National Party of Australia,3,Right,No
-63110_201008,2010,Australia,Australian Greens,4,Right,Yes
+63110_201008,2010,Australia,Australian Greens,4,Left,Yes
 63320_201008,2010,Australia,Australian Labor Party,3,Center-left,No
 63620_201008,2010,Australia,Liberal Party of Australia,3,Center-right,No
 63621_201008,2010,Australia,Liberal National Party of Queensland,3,Center-right,No
 63810_201008,2010,Australia,Australian Country Party / National Party of Australia,NA,Right,No
-63110_201309,2013,Australia,Australian Greens,4,Right,Yes
+63110_201309,2013,Australia,Australian Greens,4,Left,Yes
 63320_201309,2013,Australia,Australian Labor Party,3,Center-left,No
 63410_201309,2013,Australia,Palmer United Party,2,Center-right,No
 63620_201309,2013,Australia,Liberal Party of Australia,3,Center-right,No
@@ -103,14 +103,14 @@ manifesto_id,year,countryname,partyname,migration_positive,left_right,green
 63622_201309,2013,Australia,Country Liberal Party,NA,Right,No
 63710_201309,2013,Australia,Katter's Australian Party,NA,NA,No
 63810_201309,2013,Australia,Australian Country Party / National Party of Australia,NA,Right,No
-63110_201607,2016,Australia,Australian Greens,NA,Right,Yes
+63110_201607,2016,Australia,Australian Greens,NA,Left,Yes
 63320_201607,2016,Australia,Australian Labor Party,3,Center-left,No
 63620_201607,2016,Australia,Liberal Party of Australia,3,Center-right,No
 63621_201607,2016,Australia,Liberal National Party of Queensland,3,Center-right,No
 63710_201607,2016,Australia,Katter's Australian Party,NA,NA,No
 63810_201607,2016,Australia,Australian Country Party / National Party of Australia,NA,Right,No
 63901_201607,2016,Australia,Nick Xenophon Team,NA,Center,No
-63110_201905,2019,Australia,Australian Greens,4,Right,Yes
+63110_201905,2019,Australia,Australian Greens,4,Left,Yes
 63320_201905,2019,Australia,Australian Labor Party,3,Center-left,No
 63620_201905,2019,Australia,Liberal Party of Australia,3,Center-right,No
 63621_201905,2019,Australia,Liberal National Party of Queensland,3,Center-right,No
@@ -118,67 +118,67 @@ manifesto_id,year,countryname,partyname,migration_positive,left_right,green
 63810_201905,2019,Australia,Australian Country Party / National Party of Australia,NA,Right,No
 63901_201905,2019,Australia,Centre Alliance,NA,Center,No
 64951_198407,1984,New Zealand,Social Credit / Democratic Party,2,Center,No
-64320_199311,1993,New Zealand,Labour Party,3,Right,No
+64320_199311,1993,New Zealand,Labour Party,3,Left,No
 64321_199311,1993,New Zealand,Alliance,2,Left,No
 64620_199311,1993,New Zealand,National Party,3,Right,No
 64420_199610,1996,New Zealand,ACT New Zealand,3,Right,No
-64320_199911,1999,New Zealand,Labour Party,3,Right,No
+64320_199911,1999,New Zealand,Labour Party,3,Left,No
 64321_199911,1999,New Zealand,Alliance,2,Left,No
 64420_199911,1999,New Zealand,ACT New Zealand,3,Right,No
 64620_199911,1999,New Zealand,National Party,3,Right,No
 64420_200207,2002,New Zealand,ACT New Zealand,3,Right,No
 64421_200207,2002,New Zealand,United Future New Zealand,3,Center,No
-64422_200207,2002,New Zealand,Jim Anderton’s Progressive Coalition,NA,Right,No
+64422_200207,2002,New Zealand,Jim Anderton’s Progressive Coalition,NA,Left,No
 64621_200207,2002,New Zealand,New Zealand First Party,1,Right,No
-64110_200509,2005,New Zealand,Green Party,2,Right,Yes
-64320_200509,2005,New Zealand,Labour Party,3,Right,No
+64110_200509,2005,New Zealand,Green Party,2,Left,Yes
+64320_200509,2005,New Zealand,Labour Party,3,Left,No
 64420_200509,2005,New Zealand,ACT New Zealand,NA,Right,No
-64422_200509,2005,New Zealand,Jim Anderton’s Progressive,NA,Right,No
+64422_200509,2005,New Zealand,Jim Anderton’s Progressive,NA,Left,No
 64620_200509,2005,New Zealand,National Party,3,Right,No
-64901_200509,2005,New Zealand,Māori Party,NA,Right,No
-64110_200811,2008,New Zealand,Green Party,2,Right,Yes
-64320_200811,2008,New Zealand,Labour Party,3,Right,No
+64901_200509,2005,New Zealand,Māori Party,NA,Left,No
+64110_200811,2008,New Zealand,Green Party,2,Left,Yes
+64320_200811,2008,New Zealand,Labour Party,3,Left,No
 64420_200811,2008,New Zealand,ACT New Zealand,NA,Right,No
 64421_200811,2008,New Zealand,United Future New Zealand,NA,Center,No
-64422_200811,2008,New Zealand,Progressive Party,NA,Right,No
+64422_200811,2008,New Zealand,Progressive Party,NA,Left,No
 64620_200811,2008,New Zealand,National Party,3,Right,No
-64901_200811,2008,New Zealand,Māori Party,NA,Right,No
-64110_201111,2011,New Zealand,Green Party,2,Right,Yes
-64320_201111,2011,New Zealand,Labour Party,2,Right,No
+64901_200811,2008,New Zealand,Māori Party,NA,Left,No
+64110_201111,2011,New Zealand,Green Party,2,Left,Yes
+64320_201111,2011,New Zealand,Labour Party,2,Left,No
 64420_201111,2011,New Zealand,ACT New Zealand,NA,Right,No
 64421_201111,2011,New Zealand,United Future New Zealand,NA,Center,No
 64620_201111,2011,New Zealand,National Party,3,Right,No
 64621_201111,2011,New Zealand,New Zealand First Party,1,Right,No
-64901_201111,2011,New Zealand,Māori Party,NA,Right,No
-64902_201111,2011,New Zealand,Mana Party,NA,Right,No
-64110_201409,2014,New Zealand,Green Party,2,Right,Yes
-64320_201409,2014,New Zealand,Labour Party,2,Right,No
+64901_201111,2011,New Zealand,Māori Party,NA,Left,No
+64902_201111,2011,New Zealand,Mana Party,NA,Left,No
+64110_201409,2014,New Zealand,Green Party,2,Left,Yes
+64320_201409,2014,New Zealand,Labour Party,2,Left,No
 64420_201409,2014,New Zealand,ACT New Zealand,NA,Right,No
 64421_201409,2014,New Zealand,United Future New Zealand,NA,Center,No
 64620_201409,2014,New Zealand,National Party,3,Right,No
 64621_201409,2014,New Zealand,New Zealand First Party,1,Right,No
-64901_201409,2014,New Zealand,Māori Party,NA,Right,No
-64110_201709,2017,New Zealand,Green Party,2,Right,Yes
-64320_201709,2017,New Zealand,Labour Party,2,Right,No
+64901_201409,2014,New Zealand,Māori Party,NA,Left,No
+64110_201709,2017,New Zealand,Green Party,2,Left,Yes
+64320_201709,2017,New Zealand,Labour Party,2,Left,No
 64420_201709,2017,New Zealand,ACT New Zealand,NA,Right,No
 64620_201709,2017,New Zealand,National Party,3,Right,No
 64621_201709,2017,New Zealand,New Zealand First Party,1,Right,No
-64901_201709,2017,New Zealand,Māori Party,NA,Right,No
-64110_202010,2020,New Zealand,Green Party,NA,Right,Yes
-64320_202010,2020,New Zealand,Labour Party,NA,Right,No
+64901_201709,2017,New Zealand,Māori Party,NA,Left,No
+64110_202010,2020,New Zealand,Green Party,NA,Left,Yes
+64320_202010,2020,New Zealand,Labour Party,NA,Left,No
 64420_202010,2020,New Zealand,ACT New Zealand,NA,Right,No
 64620_202010,2020,New Zealand,National Party,NA,Right,No
 64621_202010,2020,New Zealand,New Zealand First Party,NA,Right,No
-64901_202010,2020,New Zealand,Māori Party,NA,Right,No
-72903_200301,2003,Israel,National Democratic Assembly,NA,Right,No
+64901_202010,2020,New Zealand,Māori Party,NA,Left,No
+72903_200301,2003,Israel,National Democratic Assembly,NA,Left,No
 92710_199110,1991,Poland,Confederation for an Independent Poland,NA,Right,No
 92210_199309,1993,Poland,Democratic Left Alliance,2,Center-left,No
-92322_199309,1993,Poland,Union of Labour,NA,Right,No
+92322_199309,1993,Poland,Union of Labour,NA,Left,No
 92410_199309,1993,Poland,Democratic Union,NA,Right,No
 92710_199309,1993,Poland,Confederation for an Independent Poland,NA,Right,No
 92811_199309,1993,Poland,Polish Peasants' Party,NA,Right,No
 96952_199006,1990,Slovakia,Coalition of Coexistence and the Hungarian Christian-Democratic Movement,NA,Right,No
-96220_199206,1992,Slovakia,Party of the Democratic Left,NA,Right,No
+96220_199206,1992,Slovakia,Party of the Democratic Left,NA,Left,No
 181310_199404,1994,South Africa,African National Congress,2,Center-left,No
 181410_199404,1994,South Africa,Democratic Party,NA,Right,No
 181310_199906,1999,South Africa,African National Congress,2,Center-left,No
@@ -189,20 +189,20 @@ manifesto_id,year,countryname,partyname,migration_positive,left_right,green
 181910_200404,2004,South Africa,Inkatha Freedom Party,2,Right,No
 181310_200904,2009,South Africa,African National Congress,2,Center-left,No
 181411_200904,2009,South Africa,Democratic Alliance,2,Center-right,No
-181420_200904,2009,South Africa,Congress of the People,2,Right,No
+181420_200904,2009,South Africa,Congress of the People,2,Left,No
 181910_200904,2009,South Africa,Inkatha Freedom Party,NA,Right,No
 181210_201405,2014,South Africa,Economic Freedom Fighters,1,Far-left,No
 181310_201405,2014,South Africa,African National Congress,2,Center-left,No
 181411_201405,2014,South Africa,Democratic Alliance,2,Center-right,No
-181420_201405,2014,South Africa,Congress of the People,NA,Right,No
+181420_201405,2014,South Africa,Congress of the People,NA,Left,No
 181910_201405,2014,South Africa,Inkatha Freedom Party,NA,Right,No
 181210_201905,2019,South Africa,Economic Freedom Fighters,1,Far-left,No
 181310_201905,2019,South Africa,African National Congress,2,Center-left,No
-181311_201905,2019,South Africa,United Democratic Movement,NA,Right,No
-181320_201905,2019,South Africa,Good,NA,Right,No
-181325_201905,2019,South Africa,National Freedom Party,NA,Right,No
+181311_201905,2019,South Africa,United Democratic Movement,NA,Left,No
+181320_201905,2019,South Africa,Good,NA,Left,No
+181325_201905,2019,South Africa,National Freedom Party,NA,Left,No
 181411_201905,2019,South Africa,Democratic Alliance,2,Center-right,No
-181420_201905,2019,South Africa,Congress of the People,NA,Right,No
+181420_201905,2019,South Africa,Congress of the People,NA,Left,No
 181510_201905,2019,South Africa,African Christian Democratic Party,NA,Right,No
 181520_201905,2019,South Africa,African Transformation Movement,NA,Right,No
 181710_201905,2019,South Africa,Freedom Front Plus,NA,Right,No

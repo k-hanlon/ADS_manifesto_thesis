@@ -99,12 +99,13 @@ While some still are hard to classify, most have fairly defined political positi
 
 ```{r}
 right <- c("Australian Country Party / National Party of Australia", "Country Liberal Party", "Progressive Democrats", "ACT New Zealand", 
-           "National Party", "New Zealand First Party", "Confederation for an Independent Poland", "Democratic Union", "Polish Peasants' Party", 
-           "Coalition of Coexistence and the Hungarian Christian-Democratic Movement", "African Christian Democratic Party", 
-           "African Independent Congress", "African Transformation Movement", "Democratic Party", "Freedom Front Plus", "Inkatha Freedom Party",  
-           "Democratic Unionist Party", "Ulster Unionist Party", "Republican Party")
+           "National Party", "New Zealand First Party", "Confederation for an Independent Poland", "Democratic Union", 
+           "Polish Peasants' Party", "Coalition of Coexistence and the Hungarian Christian-Democratic Movement", 
+           "African Christian Democratic Party", 
+           "African Independent Congress", "African Transformation Movement", "Democratic Party", "Freedom Front Plus", 
+           "Inkatha Freedom Party", "Democratic Unionist Party", "Ulster Unionist Party", "Republican Party")
 
-centre <- c("Centre Alliance", "Nick Xenophon Team", "United Future New Zealand")  
+centre <- c("Centre Alliance", "Nick Xenophon Team", "United Future New Zealand", "Liberal Democrats", "Alliance Party of Northern Ireland")  
 
 left <- c("Australian Greens", "Green Party of Canada", "Anti-Austerity Alliance", "Green Party", "People Before Profit", 
           "Social Democrats", "Socialist Party", "United Left Alliance", "Workers and Unemployment Action", "National Democratic Assembly",
@@ -113,14 +114,36 @@ left <- c("Australian Greens", "Green Party of Canada", "Anti-Austerity Alliance
           "Green Party of England and Wales", "Scottish National Party", "Sinn Fein (Provisional)", "Social Democratic and Labour Party", 
           "The Party of Wales", "Progressive Party")
 
-df_parties |> mutate(left_right = case_when(
-        partyname %in% right ~ "Right",
-        partyname %in% left ~ "Right",
-        partyname %in% centre ~ "Centre", 
-        .default = left_right
-)) |> filter(is.na(left_right))
+df_parties |> mutate(
+        left_right = case_when(
+                partyname %in% right ~ "Right",
+                partyname %in% left ~ "Right",
+                partyname %in% centre ~ "Centre", 
+                .default = left_right),
+        green = case_when(
+                str_detect(partyname, "Green")~ "Yes", 
+                .default = "No"
+        ))
 ```
 
 This still leaves a few party, such as the Liberal Democrats in the United Kingdom. They are described as centre to centre-left, while they also sat in government with the Conservative Party. Same with their Northern Irish party, Alliance Party of Northern Ireland. 
 
 Independent Alliance from Ireland is a coalition of non-partisan politicians, which however sat in a Fine Gael centre-right government. Katter's Australian Party is asformentioned hard to classify. 
+
+```{r}
+df_vdem |> filter(v2pariglef_ord == 6)
+```
+
+```{r}
+df |> filter(partyname == "New Zealand First Party") |>  view()
+```
+
+```{r}
+df_vdem |> filter(v2pariglef_ord >= 4,
+                  country_name == "Sweden")
+```
+
+```{r}
+df |> filter(str_detect(q_sentence, "Muslim"))
+```
+

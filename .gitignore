@@ -8,3 +8,11 @@ data/mp_full_sts_embeddings.npy
 .RData
 .DS_Store
 .Rhistory
+data/model_splits/left_right_split/l_r_split_full_df/test_other.csv
+data/model_splits/left_right_split/l_r_split_full_df/train_other.csv
+data/model_splits/left_right_split/l_r_split_full_df/validation_inference_left.csv
+data/model_splits/green_split/green_full_df/test_other.csv
+data/model_splits/green_split/green_full_df/train_other.csv
+data/model_splits/green_split/green_full_df/validation_inference_left.csv
+data/model_splits/green_split/green_full_df_old/test_other.csv
+data
